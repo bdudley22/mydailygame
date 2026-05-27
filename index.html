@@ -12,7 +12,7 @@
 
 <body>
     <header>
-        <img src="images/GAMBLE!.png" alt="gamble!" width="1800" height="500">
+        <img src="images/GAMBLE!.png" alt="gamble!" class="logo" width="1800" height="500">
     </header>
     <main>
         <h1 id="rouletteNumber">0</h1>
@@ -25,6 +25,32 @@
         <aside>
             <p>Checkout my other projects-</p>
         </aside>
+        <div class="left-panel">
+
+            <div class="bet-option">
+                <h2 id="underState" class="state off">0</h2>
+                <div class="button">
+                    <a href="#" id="underButton">UNDER</a>
+                </div>
+            </div>
+
+            <div class="bet-option">
+                <h2 id="overState" class="state off">0</h2>
+                <div class="button">
+                    <a href="#" id="overButton">OVER</a>
+                </div>
+            </div>
+
+        </div>
+        <div class="wheel-container">
+
+            <div class="button">
+                <a href="#" id="spin">SPIN</a>
+            </div>
+
+            <canvas id="canvas" width="500" height="500"></canvas>
+
+        </div>
     </main>
     <footer>
         <p>© 2026 Brooks Dudley | Go panthers.</p>

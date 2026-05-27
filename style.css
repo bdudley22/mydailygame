@@ -2,6 +2,52 @@ body {
     color: white;
 }
 
+.logo {
+    margin-top: -42px; 
+}
+
+.wheel-container {
+    position: absolute;
+    right: 200px;
+    top: 70%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; 
+}
+
+.left-panel {
+    position: absolute;
+    left: 200px;
+    top: 75%;
+    transform: translateY(-50%);
+
+    display: flex;
+    flex-direction: row;
+    gap: 40px;
+
+    text-align: center;
+}
+
+.bet-option {
+    margin-bottom: 20px;
+}
+
+.state {
+    font-size: 40px;
+    margin: 0;
+}
+
+.state.off {
+    color: red;
+}
+
+.state.on {
+    color: lime;
+}
+
 body {
     text-align: center;
     background-color: #000000;
