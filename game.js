@@ -1,6 +1,7 @@
 let button = document.querySelector("#gambleButton");
 let rouletteNumber = document.querySelector("#rouletteNumber");
 let dailyText = document.querySelector("#daily");
+let isSpinning = false;
 button.addEventListener("click", playGamble);
 /* ---------------- DAILY NUMBER ---------------- */
 function getDailyNumber() {
@@ -16,6 +17,8 @@ dailyText.textContent = "daily number is: " + getDailyNumber();
 /* ---------------- GAMBLE LOGIC ---------------- */
 function playGamble(e){
     e.preventDefault();
+    if (isSpinning) return;
+    isSpinning = true;
     const sound = new Audio("sounds/csgo.mp3");
     sound.play();
     let finalNumber;
@@ -37,6 +40,7 @@ function playGamble(e){
                 setTimeout(spin, delay);
             } else {
                 rouletteNumber.textContent = finalNumber;
+                isSpinning = false;
             }
         }
         spin();
