@@ -13,10 +13,49 @@ canvas {
     height: auto;
 }
 
+.slot-machine {
+    margin-top: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+.slots {
+    display: flex;
+    gap: 20px;
+}
+
+.slot {
+    width: 120px;
+    height: 120px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-size: 70px;
+
+    background: #111;
+    border: 4px solid gold;
+    border-radius: 15px;
+
+    box-shadow:
+        0 0 10px gold,
+        0 0 20px orange;
+}
+
+#slotResult {
+    color: white;
+    text-shadow:
+        0 0 10px red,
+        0 0 20px red;
+}
+
 .wheel-container {
     position: absolute;
     right: 200px;
-    top: 70%;
+    top: 85%;
     transform: translateY(-50%);
 
     display: flex;
@@ -27,17 +66,48 @@ canvas {
 
 .left-panel {
     position: absolute;
-    left: 200px;
-    top: 75%;
+    left: 300px;
+    top: 85%;
     transform: translateY(-50%);
 
     display: flex;
     flex-direction: row;
-    gap: 40px;
+    gap: 5px;
 
     text-align: center;
 }
-
+.left-panel-two {
+    position: absolute;
+    left: 200px;
+    top: 60%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    text-align: center;
+    font-size: 60px;
+}
+.left-panel-two img {
+    max-width: 150px;
+    width: 100%;
+    height: auto;
+}
+.left-panel-three {
+    position: absolute;
+    left: 100px;
+    top: 120%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+    text-align: center;
+    font-size: 60px;
+}
+.left-panel-three img {
+    max-width: 300px;
+    width: 100%;
+    height: auto;
+}
 .bet-option {
     margin-bottom: 20px;
 }

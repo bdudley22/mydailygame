@@ -1,6 +1,10 @@
 let button = document.querySelector("#gambleButton");
 let rouletteNumber = document.querySelector("#rouletteNumber");
 let dailyText = document.querySelector("#daily");
+let goldcountText = document.querySelector("#gold");
+let goldcount = 0;
+const SPIN_COST = 250;
+goldcountText.textContent = "GOLD:" + goldcount;
 let isSpinning = false;
 button.addEventListener("click", playGamble);
 let underButton = document.querySelector("#underButton");
@@ -75,7 +79,7 @@ function getDailyNumber() {
     for (let i = 0; i < today.length; i++) {
         hash = today.charCodeAt(i) + ((hash << 5) - hash);
     }
-    return Math.abs(hash) % 1000;
+    return Math.abs(hash) % 451;
 }
 dailyText.textContent = "daily number is: " + getDailyNumber();
 
@@ -93,7 +97,7 @@ function playGamble(e){
     if(winChance === 100){
         finalNumber = daily;
     } else {
-        finalNumber = Math.floor(Math.random() * 999);
+        finalNumber = Math.floor(Math.random() * 1001);
     }
     setTimeout(() => {
         let counter = 0;
@@ -109,28 +113,50 @@ function playGamble(e){
                 rouletteNumber.textContent = finalNumber;
 
                 let daily = getDailyNumber();
+                /* ---------------- BASE GOLD GAIN ---------------- */
+                goldcount += finalNumber;
 
                 /* ---------------- DAILY JACKPOT ---------------- */
                 if (finalNumber === daily) {
                     triggerWinEffect();
+                    goldcount += daily;
+                    goldcount *= 10;
+                    goldcountText.textContent = "GOLD:" + goldcount;
                 }
 
                 /* ---------------- UNDER / OVER LOGIC ---------------- */
                 if (under || over) {
 
-                    let isCorrect = false;
+                let isCorrect = false;
 
-                    if (under) {
-                        isCorrect = finalNumber < daily;
+                /* OVER = higher odds */
+                if (over) {
+
+                    isCorrect = finalNumber > daily;
+
+                    if (isCorrect) {
+                        goldcount *= 1.1;
+                    } else {
+                        goldcount *= 0.8;
                     }
-
-                    if (over) {
-                        isCorrect = finalNumber > daily;
-                    }
-
-                    playResultSound(isCorrect);
                 }
 
+                /* UNDER = lower odds */
+                if (under) {
+
+                    isCorrect = finalNumber < daily;
+
+                    if (isCorrect) {
+                        goldcount *= 1.5;
+                    } else {
+                        goldcount *= 0.85;
+                    }
+                }
+
+                playResultSound(isCorrect);
+            }
+                goldcount = Math.floor(goldcount);
+                goldcountText.textContent = "GOLD:" + goldcount;
                 isSpinning = false;
                 setUnderOverLocked(false);
             }
@@ -141,7 +167,7 @@ function playGamble(e){
 
 //WHEEL CODE BELOW!!!!!!!!!!!! ILOVE GAMBLING!!!!!!!!!!!!
 
-var options = ["$100", "$10", "$25", "$250", "$30", "$1000", "$1", "$200", "$45", "$500", "$5", "$20", "$0", "$1000000", "$0", "$350", "$5", "$99"];
+var options = ["-$100", "$10", "$25", "$250", "-$3000", "$1000", "$1", "$200", "$45", "$500", "$5", "$20", "$0", "$50000", "$0", "$350", "-$500", "$99"];
 
 var startAngle = 0;
 var arc = Math.PI / (options.length / 2);
@@ -157,6 +183,12 @@ document.getElementById("spin").addEventListener("click", function(e){
     e.preventDefault();
 
     if (isSpinningTwo) return;
+
+    if (goldcount < SPIN_COST) {
+        new Audio("sounds/oof.mp3").play();
+        return;
+    }
+
     isSpinningTwo = true;
 
     spin();
@@ -240,6 +272,10 @@ function drawRouletteWheel() {
 }
 
 function spin() {
+
+  goldcount -= SPIN_COST;
+  goldcountText.textContent = "GOLD:" + goldcount;
+
   spinAngleStart = Math.random() * 10 + 10;
   spinTime = 0;
   spinTimeTotal = Math.random() * 3 + 4 * 1000;
@@ -271,9 +307,16 @@ function stopRotateWheel() {
   ctx.font = 'bold 30px Helvetica, Arial';
   ctx.fillText(text, 250 - ctx.measureText(text).width / 2, 250 + 10);
   ctx.restore();
+  /* ---------------- GOLD UPDATE ---------------- */
+  let cleaned = text.replace("$", "").replace(" ", "");
+  let value = parseInt(cleaned);
+  if (!isNaN(value)) {
+    goldcount += value; // supports negative automatically
+    goldcountText.textContent = "GOLD:" + goldcount;
+  }
 
   /* ---------------- WHEEL GAME LOGIC ---------------- */
-  if (text === "$1000000") {
+  if (text === "$50000") {
       triggerWinEffect();
   }
   let numericValue = parseInt(text.replace(/[^0-9]/g, ""));

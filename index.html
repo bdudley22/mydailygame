@@ -32,6 +32,7 @@
                 <h2 id="underState" class="state off">0</h2>
                 <div class="button">
                     <a href="#" id="underButton">UNDER</a>
+                    <p>WIN:1.5x LOSS:0.85x</p>
                 </div>
             </div>
 
@@ -39,9 +40,23 @@
                 <h2 id="overState" class="state off">0</h2>
                 <div class="button">
                     <a href="#" id="overButton">OVER</a>
+                    <p>WIN:1.1x LOSS:0.8x</p>
                 </div>
             </div>
 
+        </div>
+        <div class="left-panel-two">
+            <div>
+                <img src="images/coin.png">
+            </div>
+            <div>
+                <p id="gold">GOLD: </p>
+            </div>
+        </div>
+        <div class="left-panel-three">
+            <div>
+                <img src="images/ODDS.png">
+            </div>
         </div>
         <div class="wheel-container">
 
@@ -52,10 +67,26 @@
             <canvas id="canvas" width="500" height="500"></canvas>
 
         </div>
+        <div class="slot-machine">
+
+            <h1 id="slotResult">🎰 SLOT MACHINE 🎰</h1>
+
+            <div class="slots">
+                <div class="slot" id="slot1">🍒</div>
+                <div class="slot" id="slot2">🍋</div>
+                <div class="slot" id="slot3">🍇</div>
+            </div>
+
+            <div class="button">
+                <a href="#" id="slotButton">SPIN SLOTS</a>
+            </div>
+
+        </div>
     </main>
     <footer>
         <p>© 2026 Brooks Dudley | Go panthers.</p>
     </footer>
     <script src="game.js"></script>
+    <script src="slots.js"></script>
 </body>
 </html>
