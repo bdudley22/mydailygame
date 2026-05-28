@@ -15,17 +15,21 @@
     <header>
         <img src="images/GAMBLE!.png" alt="gamble!">
     </header>
+
     <main>
         <h1 id="rouletteNumber">0</h1>
+
         <div ontouchstart="">
             <div class="button">
                 <a href="#" id="gambleButton">GAMBLE</a>
             </div>
             <p id="daily">daily number is:</p>
         </div>
+
         <aside>
             <p>Checkout my other projects-</p>
         </aside>
+
         <div class="left-panel">
 
             <div class="bet-option">
@@ -45,6 +49,7 @@
             </div>
 
         </div>
+
         <div class="left-panel-two">
             <div>
                 <img src="images/coin.png">
@@ -53,20 +58,21 @@
                 <p id="gold">GOLD: </p>
             </div>
         </div>
+
         <div class="left-panel-three">
             <div>
-                <img src="images/ODDS.png">
+                
             </div>
         </div>
-        <div class="wheel-container">
 
+        <div class="wheel-container">
             <div class="button">
                 <a href="#" id="spin">SPIN</a>
             </div>
 
             <canvas id="canvas" width="500" height="500"></canvas>
-
         </div>
+
         <div class="slot-machine">
 
             <h1 id="slotResult">🎰 SLOT MACHINE 🎰</h1>
@@ -82,11 +88,56 @@
             </div>
 
         </div>
+
+        <!--One-->
+        <div class="crash-wrapper">
+
+            <div class="crash-container">
+                <h1 id="crashMultiplier">1.00x</h1>
+                <div id="crashRocket">🚀</div>
+                <p id="crashResult">READY TO FLY</p>
+
+                <div class="crash-buttons">
+                    <div class="button">
+                        <button id="crashStart">START CRASH</button>
+                    </div>
+
+                    <div class="button">
+                        <button id="crashCashout">CASH OUT</button>
+                    </div>
+                </div>
+            </div>
+
+            <!--Two-->
+            <div class="crash-container">
+                <h1 id="crashMultiplierMega">1.00x</h1>
+                <div id="crashRocketMega">🚀</div>
+                <p id="crashResultMega">READY TO FLY</p>
+
+                <div class="crash-buttons">
+                    <div class="button">
+                        <button id="crashStartMega">START MEGA CRASH</button>
+                        <p>$1000 BUY IN</p>
+                    </div>
+
+                    <div class="button">
+                        <button id="crashCashoutMega">CASH OUT</button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
     </main>
+
     <footer>
         <p>© 2026 | Go panthers.</p>
     </footer>
+
     <script src="game.js"></script>
     <script src="slots.js"></script>
+    <script src="crash.js"></script>
+    <script src="crashmega.js"></script>
+
 </body>
 </html>

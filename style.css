@@ -260,4 +260,72 @@ body {
         max-width: 500px;
     }
 }
-```
+
+.crash-wrapper {
+    display: flex;
+    justify-content: center;
+    gap: 80px;
+    flex-wrap: wrap;
+    margin-top: 120px;
+    width: 100%;
+}
+
+.crash-container {
+    width: 420px;
+    text-align: center;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+}
+
+#crashMultiplier,
+#crashMultiplierMega {
+    font-size: 80px;
+    color: white;
+    margin: 0;
+    text-shadow: 0 0 10px cyan, 0 0 20px cyan, 0 0 40px cyan;
+}
+
+#crashRocket,
+#crashRocketMega {
+    font-size: 80px;
+    transition: transform 0.05s linear;
+}
+
+#crashResult,
+#crashResultMega {
+    font-size: 28px;
+    color: white;
+    margin: 0;
+}
+
+.crash-buttons {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* IMPORTANT FIX: buttons inside .button should NOT break layout */
+.button button {
+    all: unset;
+    cursor: pointer;
+    display: block;
+    color: white;
+    font-family: Helvetica, sans-serif;
+    font-weight: bold;
+    font-size: 24px;
+    text-align: center;
+    background-color: #FFA12B;
+    padding: 16px 28px;
+    border-radius: 5px;
+    box-shadow: inset 0 1px 0 #FFE5C4, 0 10px 0 #915100;
+    text-shadow: 0px 1px 0px #000;
+}
+
+.button button:active {
+    transform: translateY(10px);
+    background-color: #F78900;
+}
